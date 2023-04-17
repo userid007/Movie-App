@@ -27,7 +27,7 @@ function App() {
       setCurrentPage(1);
     }
   };
-  const searchMovieDB = () => {
+  const searchMovieDB = (currentPage) => {
     axios
       .get("https://www.omdbapi.com/", {
         params: {
@@ -47,12 +47,16 @@ function App() {
   };
   useEffect(() => {
     if (title != "") {
-      searchMovieDB();
+      searchMovieDB(currentPage);
+      window.scrollTo(0, 0);
     }
   }, [currentPage]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchMovieDB();
+    if (title != "") {
+      searchMovieDB(1);
+      setCurrentPage(1);
+    }
   };
 
   const moviesList = result.map((movie) => {
