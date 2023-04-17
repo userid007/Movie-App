@@ -29,7 +29,7 @@ function App() {
   };
   const searchMovieDB = () => {
     axios
-      .get("http://www.omdbapi.com/", {
+      .get("https://www.omdbapi.com/", {
         params: {
           apikey: "4392338a",
           s: title,
